@@ -13,7 +13,10 @@ pipeline {
     stages {
         stage('Build') {
                steps {
-                sh "./progress.sh"   
+                sh '''
+                chmod u+x progress.sh
+                ./progress.sh
+                '''   
                 stash includes: '**/*', name: 'workspace'
             }
         }
